@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Press+Start+2P|Reenie+Beanie|Syncopate|Tomorrow&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Aldrich&display=swap');
+body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+header {
+    text-align: center;
+    font-size: 45px;
+}
+
+nav {
+    height: 50px;
+    background: linear-gradient(30deg, rgb(223, 50, 19), rgb(238, 217, 29), rgb(29, 85, 238));
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
+    -moz-box-shadow: 5px 4px rgba(209, 231, 250, 0.65);
+    -webkit-box-shadow: 5px 4px rgba(209, 231, 250, 0.65);
+    -o-box-shadow: 5px 4px rgba(209, 231, 250, 0.65);
+    box-shadow: 5px 4px rgba(209, 231, 250, 0.65);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    padding-right: 5px;
+    padding-left: 15px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: none;
+}
+
+footer {
+    background: linear-gradient(30deg, rgb(29, 85, 238), rgb(238, 217, 29), rgb(223, 50, 19));
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 190px;
+}
+
+section {
+    padding-top: 15px;
+}
+
+#hockgame {
+    font-family: 'Press Start 2P', cursive;
+    padding-left: 30px;
+    font-size: 30px;
+}
+
+#bienvenida {
+    padding-left: 40px;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 22px;
+    text-align: justify;
+}
+
+button {
+    margin-left: 545px;
+    margin-top: 20px;
+    color: rgba(22, 22, 22, 0.424);
+    background-color: rgb(238, 217, 29);
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    padding: 20px;
+}
+
+button:hover {
+    animation-name: colores;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+#tablero,
+#player1,
+#player2 {
+    display: none;
+}
+
+#instrucciones {
+    text-align: center;
+}
+
+#puntuacion {
+    font-size: 30px;
+    margin-left: 300px;
+    margin-top: 20px;
+    color: red;
+}
+
+@keyframes colores {
+    from {
+        left: 0px;
+        color: red;
+    }
+    10% {
+        color: orange;
+    }
+    20% {
+        color: pink;
+    }
+    30% {
+        color: rgb(223, 97, 223);
+    }
+    40% {
+        color: rgb(179, 101, 224);
+    }
+    50% {
+        color: rgb(88, 48, 182)
+    }
+    to {
+        color: gray;
+    }
+}

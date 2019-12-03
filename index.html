@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hockey online!</title>
+    <!--Sección de links-->
+
+    <!--fin sección de links-->
+
+    <!--Sección de CSS-->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!--fin sección de CSS-->
+</head>
+
+<body>
+    <!--Header de la página-->
+    <header>
+        Juegos gratis online
+    </header>
+    <!--Fin header de la página-->
+
+    <!--El nav es el menú navegacional de la página-->
+    <nav>
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#bienvenida">Jugar</a></li>
+            <li><a href="#">Registrarse</a></li>
+
+        </ul>
+
+    </nav>
+    <!--Fin nav-->
+
+    <!--Sección con mensaje de bienvenida-->
+    <section id="bienvenida">
+        <p id="hockgame"> ¡Bienvenido a HockGame!</p>
+        Pasa un rato agradable y divertido jugando con tus amigos el tradicional juego de hockey de mesa ¡gratis! <br> Regístrate si deseas guardar tus puntuaciones y competir con otros jugadores. ¿Qué estás esperando? <br> HockGame es tu sitio preferido
+        para jugar hockey de mesa. <br>
+        <button onclick="mostrarTablero()" id="start">START</button>
+    </section>
+    <!--Fin sección de la bienvenida-->
+
+    <!--Aquí se encontrará el juego-->
+    <section id="juego ">
+        <article id="instrucciones"></article>
+        <article id="player1">
+            <h2>Jugador 1</h2>
+            <label for="">Colores:</label>
+            <input type="radio" id="Azul" name="color" onclick="colorP1='#80BDF7'" value="#80BDF7"> Azul
+            <input type="radio" id="Amarillo" name="color" onclick="coloP1='#F0F926'" value="#F0F926"> Amarillo
+            <input type="radio" id="Rosa" name="color" onclick="colorP1='#f2f'" value="#f2f"> Rosa
+            <input type="radio" id="Rojo" name="color" onclick="colorP1='#FF2121'" value="#FF2121"> Rojo
+            <input type="radio" id="Verde" name="color" onclick="colorP1='#3DCC32'" value="#3DCC32"> Verde
+            <br>
+            <button onclick="createP1()">Crear jugador</button>
+        </article>
+        <article id="player2">
+            <h2>Jugador 2</h2>
+            <label for="">Colores:</label>
+            <input type="radio" id="Azul" name="color2" onclick="colorP2='#80BDF7'" value="#80BDF7"> Azul
+            <input type="radio" id="Amarillo" name="color2" onclick="colorP2='#F0F926'" value="#F0F926"> Amarillo
+            <input type="radio" id="Rosa" name="color2" onclick="colorP2='#f2f'" value="#f2f"> Rosa
+            <input type="radio" id="Rojo" name="color2" onclick="colorP2='#FF2121'" value="#FF2121"> Rojo
+            <input type="radio" id="Verde" name="color2" onclick="colorP2='#3DCC32'" value="#3DCC32"> Verde
+            <br>
+            <button onclick="createP2()">Crear jugador</button>
+        </article>
+        <article id="tablero">
+            <div id="puntuacion"></div>
+            <canvas id="lienzo" width="1000 " height="500"></canvas>
+
+        </article>
+
+    </section>
+    <!--Fin sección del juego-->
+
+    <!--Pie de página-->
+    <footer>
+        Universidad Politécnica del Estado de Morelos <br> Herramientas Web, 2019. <br> Evidencia Integradora<br> Desarrolladores (c): Benitez Arroyo José Alfredo, Esquivel Rueda Andrea Gabriela, Grande Flores Brandon Jair y Mercado Cruz Tania Guadalupe
+    </footer>
+    <!--Fin pie de página-->
+
+    <script src="js/tablero.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>
