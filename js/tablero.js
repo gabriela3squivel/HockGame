@@ -1,3 +1,10 @@
+/**
+ * Tipo de componente: JavaScript
+ * Descripción: Código que prepara los componentes para dibujar en el canvas
+ * Última modificación: 1:27 pm 4/12/2019
+ * Desarrolladores: Andrea, Tania, Alfredo y Jair
+ */
+
 function mostrarTablero() {
     showInstructions();
     document.getElementById("tablero").style.display = "block";

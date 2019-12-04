@@ -1,3 +1,10 @@
+/**
+ * Tipo de componente: JavaScript
+ * Descripción: Código que hace posible el juego de la mesa de hockey
+ * Última modificación: 1:27 pm 4/12/2019
+ * Desarrolladores: Andrea, Tania, Alfredo y Jair
+ */
+
 /**Color de las fichas de los jugadores */
 colorP1 = "#f2f";
 colorP2 = "#fff";
@@ -328,8 +335,10 @@ function moverJugadores() {
     player2.x += player2.xVel;
     player2.y += player2.yVel;
 }
+/**Función que determina en dónde están los jugadores (fuera o dentro del área de juego) */
 
-function checkPlayersBounds() {
+function ubicacionJugadores() {
+    //Jugador 1 en X (ancho)
     if (player1.x + player1.size > canvas.width) {
         player1.x = canvas.width - player1.size;
         player1.xVel *= -0.5;
@@ -338,6 +347,7 @@ function checkPlayersBounds() {
         player1.x = 0 + player1.size;
         player1.xVel *= -0.5;
     }
+    //jugador 1 en Y (alto)
     if (player1.y + player1.size > canvas.height) {
         player1.y = canvas.height - player1.size;
         player1.yVel *= -0.5;
@@ -346,6 +356,7 @@ function checkPlayersBounds() {
         player1.y = 0 + player1.size;
         player1.yVel *= -0.5;
     }
+    //Jugador 2 en X (ancho)
     if (player2.x + player2.size > canvas.width) {
         player2.x = canvas.width - player2.size;
         player2.xVel *= -0.5;
@@ -354,6 +365,7 @@ function checkPlayersBounds() {
         player2.x = 0 + player2.size;
         player2.xVel *= -0.5;
     }
+    //Jugador 2 en Y (alto)
     if (player2.y + player2.size > canvas.height) {
         player2.y = canvas.height - player2.size;
         player2.yVel *= -0.5;
@@ -363,21 +375,21 @@ function checkPlayersBounds() {
         player2.yVel *= -0.5;
     }
 }
-
+/**Función que hace el juego posible :D */
 function play() {
 
-    clear()
-    dibujarTablero()
-    dibujarPorterías()
-    teclasJugadores();
-    checkPlayersBounds();
-    checkfichaBounds();
-    choqueFicha();
-    moverJugadores()
-    moveficha();
-    cargarJugadores()
-    nuevaFicha()
-    tableroPuntos();
+    clear(); //limpia el canvas
+    dibujarTablero() //dibuja el tablero
+    dibujarPorterías() //dibuja las porterías
+    teclasJugadores(); //checa las teclas de los jugadores
+    ubicacionJugadores();
+    ubicacionFicha();
+    choqueFicha(); //checa si algún jugador ha chocado con la pelota 
+    moverJugadores(); //desplaza a los jugadores
+    moveficha(); //mueve la ficha
+    cargarJugadores(); //carga a los jugadores con su nueva posición
+    nuevaFicha(); //carga la ficha en su nueva posición 
+    tableroPuntos(); //actualiza el tablero 
     requestAnimationFrame(play);
 }
 /**Función que dibuja a la ficha con la que se juega en su nueva posición */
@@ -390,7 +402,7 @@ function nuevaFicha() {
     c.closePath();
     c.restore();
 }
-
+//Función que carga a los jugadores en su nueva posición en el canvas 
 function cargarJugadores() {
     c.save();
     c.fillStyle = colorP1
@@ -405,7 +417,8 @@ function cargarJugadores() {
     c.closePath();
     c.restore();
 }
-
+//cuando se anota un Gol, la ubicación de los jugadores y la pelota vuelve a su posición inicial, así como el estado
+/**de las teclas de los jugadores, el score se conserva */
 function reset() {
     var score1 = player1.score;
     var score2 = player2.score;
@@ -435,7 +448,10 @@ function choqueFicha() {
         choqueFichaXJugador(ficha, player2);
     }
 }
-
+/**Función que es invocada cuando la distancia entre la ficha y un jugador es menor a 0 es decir, están cerca.
+ * Esta función hace el rebote de la pelota con el jugador, determinando su desplazamiento en X y Y de acuerdo a 
+ * la ubicación del jugador que la golpeó. 
+ */
 function choqueFichaXJugador(ficha, jugador) {
     var dx = (ficha.x - jugador.x) / (ficha.size);
     var dy = (ficha.y - jugador.y) / (ficha.size);
@@ -448,7 +464,11 @@ function choqueFichaXJugador(ficha, jugador) {
 function separacion(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
-
+/**Mueve la ficha en la posición deseada. 
+ * Esta función fue la más fea de codificar, se utiliza la "velocidad" del objeto para crear ese efecto de 
+ * "deslice" que en realidad es como los "saltos" en pixeles que da para llegar a cierto lugar y la "velocidad"
+ * en lo que lo hace. Crea ese efecto de desplazamiento rápido a lento a una dirección
+ */
 function moveficha() {
     if (ficha.xVel !== 0) {
         if (ficha.xVel > 0) {
@@ -472,7 +492,10 @@ function moveficha() {
     ficha.y += ficha.yVel;
 }
 
-function checkfichaBounds() {
+/**Función que determina en dónde está la ficha, si pasa los límites del área del juego en una altura en 
+ * específica, entonces es un gol y actualiza el score del jugador 
+ */
+function ubicacionFicha() {
     if (ficha.x + ficha.size > 770) {
         if (ficha.y > 150 && ficha.y < 350) {
             player1.score++;
@@ -500,8 +523,11 @@ function checkfichaBounds() {
         ficha.yVel *= -1.5;
     }
 }
-
-function checkPlayersBounds() {
+/**Función que determina la ubicación de los jugadores, por ej. cuando llega a los límites del canvas
+ * Si llega al límite, lo retrocede (lo que es el tamaño de la pelota) hacia abajo, arriba, derecha o izquierda
+ * de acuerdo al límite o línea que haya intentado pasar
+ */
+function ubicacionJugadores() {
     if (player1.x + player1.size > canvas.width) {
         player1.x = canvas.width - player1.size;
         player1.xVel *= -0.5;
